@@ -28,7 +28,6 @@ const alunosDaEscola = [
     }
 ];
 
-
 // implementação
 function adicionarAluno(nome) {
     alunosDaEscola.push({
@@ -134,14 +133,18 @@ function aprovarAluno(aluno) {
     if (verificador.cursos < 1) {
         return "Aluno não tem curso. Não pode ser aprovado."
     } else {
-        
+        let media = 0.0
+        media += media + verificador.notas.reduce((a, b) => a+b)
+        media = media / verificador.notas.length
+
+        return (verificador.faltas < 4 && media >= 7) ? `Parabéns, aprovado com ${media.toFixed(1)}!` : "Reprovado! Se esforce mais."
+
         // Verificar condições de aprovação
     }
-    /* 
-    Ao receber um aluno devidamente cadastrado em nossa lista, deverá dizer se o mesmo está aprovado ou não. Os critérios de aprovação são: ter no máximo 3 faltas e média 7 em notas.
-    Só o aluno só poderá ser aprovado se o mesmo tiver matriculado em um curso.
-    */
+    /**
+     * Ao receber um aluno devidamente cadastrado em nossa lista, deverá dizer se o mesmo está aprovado ou não. 
+     * Os critérios de aprovação são: ter no máximo 3 faltas e média 7 em notas.
+     * O aluno só poderá ser aprovado se o mesmo tiver matriculado em um curso.
+     **/ 
 }
 
-console.log(aplicarNota(buscarAluno('Guilherme'), "fullstack"))
-console.log(listarAlunos())
